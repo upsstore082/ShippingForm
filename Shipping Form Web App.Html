@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>THE UPS STORE #82 - Shipping Form</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 800px;
+        background: white;
+        margin: auto;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        border-top: 8px solid #ffc10e; /* UPS Yellow */
+    }
+
+    h1 {
+        text-align: center;
+        color: #302d27;
+        margin-bottom: 5px;
+        font-weight: bold;
+        font-size: 26px;
+    }
+
+    .store-info {
+        text-align: center;
+        color: #3a3835;
+        margin-bottom: 25px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    h3 {
+        color: #302d27;
+        border-left: 6px solid #ffc10e;
+        padding-left: 10px;
+        margin-top: 30px;
+    }
+
+    label {
+        display: block;
+        margin-top: 12px;
+        font-weight: bold;
+        color: #3a3835;
+    }
+
+    input, textarea, select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    button {
+        margin-top: 25px;
+        width: 100%;
+        background: #302d27; /* UPS Brown */
+        color: white;
+        padding: 14px;
+        border: none;
+        font-size: 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #4a453d;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+<script>
+    function checkCountry() {
+        let country = document.getElementById("toCountry").value;
+        let descBox = document.getElementById("usaDescriptionBox");
+
+        if (country === "USA") {
+            descBox.classList.remove("hidden");
+            document.getElementById("item_description").required = true;
+        } else {
+            descBox.classList.add("hidden");
+            document.getElementById("item_description").required = false;
+        }
+    }
+</script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>THE UPS STORE #82</h1>
+
+    <div class="store-info">
+        Hanlon Park Mall, 17A - 218 Silvercreek Pkwy N<br>
+        Guelph, Ontario - N1H 8E8<br>
+        Phone: (519) 822-2082<br>
+        Email: store82@theupsstore.ca
+    </div>
+
+    <form action="https://script.google.com/macros/s/AKfycbwRV7uUaTjo9vGmjaPinXR1K3qy3beJLMkvyu4WwHHj/dev" method="POST">
+
+        <!-- FROM SECTION -->
+        <h3>From (Sender)</h3>
+
+        <label>Full Name</label>
+        <input type="text" name="from_name" required>
+
+        <label>Phone</label>
+        <input type="text" name="from_phone" required>
+
+        <label>Email</label>
+        <input type="email" name="from_email" required>
+
+        <label>Address</label>
+        <textarea name="from_address" rows="3" required></textarea>
+
+        <label>City</label>
+        <input type="text" name="from_city" required>
+
+        <label>Postal Code</label>
+        <input type="text" name="from_postal" required>
+
+
+        <!-- TO SECTION -->
+        <h3>To (Recipient)</h3>
+
+        <label>Full Name</label>
+        <input type="text" name="to_name" required>
+
+        <label>Phone</label>
+        <input type="text" name="to_phone" required>
+
+        <label>Email</label>
+        <input type="email" name="to_email" required>
+
+        <label>Address</label>
+        <textarea name="to_address" rows="3" required></textarea>
+
+        <label>City</label>
+        <input type="text" name="to_city" required>
+
+        <label>Postal Code</label>
+        <input type="text" name="to_postal" required>
+
+        <label>Country</label>
+        <select name="to_country" id="toCountry" onchange="checkCountry()" required>
+            <option value="">Select Country</option>
+            <option value="Canada">Canada</option>
+            <option value="USA">USA</option>
+        </select>
+
+
+        <!-- ITEM DESCRIPTION (USA ONLY) -->
+        <div id="usaDescriptionBox" class="hidden">
+            <label>Item Description (Required for USA Shipments)</label>
+            <textarea id="item_description" name="item_description" rows="3"></textarea>
+        </div>
+
+
+        <!-- SUBMIT -->
+        <button type="submit">Submit Shipment</button>
+
+    </form>
+</div>
+
+</body>
+</html>
