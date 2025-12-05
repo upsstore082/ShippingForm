@@ -182,7 +182,31 @@
 
     </form>
 </div>
+<form action="https://upsstore082.github.io/ShippingForm/index.Html" method="POST" onsubmit="redirectAfterSubmit(event)">
+    ...
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+function redirectAfterSubmit(e) {
+    e.preventDefault(); // prevent default form submission
+    const form = e.target;
+
+    fetch(form.action, {
+        method: "POST",
+        body: new FormData(form)
+    })
+    .then(response => response.text())
+    .then(data => {
+        // Redirect after submission
+        window.location.href = "https://upsstore082.github.io/ShippingForm/thankyou.html";
+    })
+    .catch(error => alert("Error: " + error));
+}
+</script>
+
 
 </body>
 </html>
+
 
