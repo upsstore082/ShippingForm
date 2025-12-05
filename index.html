@@ -182,10 +182,7 @@
     ...
             <button type="submit">Submit</button>
         </form>
-    </form>
-</div>
-
-<script>
+        <script>
 function redirectAfterSubmit(e) {
     e.preventDefault(); // prevent default form submission
     const form = e.target;
@@ -202,10 +199,13 @@ function redirectAfterSubmit(e) {
     .catch(error => alert("Error: " + error));
 }
 </script>
+    </form>
+</div>
 
 
 </body>
 </html>
+
 
 
 
