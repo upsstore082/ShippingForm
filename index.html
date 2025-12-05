@@ -175,9 +175,10 @@
             <label>Item Description (Required for USA Shipments)</label>
             <textarea id="item_description" name="item_description" rows="3"></textarea>
         </div>
+    </form>
+</div>
 
-
-        <!-- SUBMIT -->
+ <!-- SUBMIT -->
           <form action="https://upsstore082.github.io/ShippingForm/index.html" method="POST" onsubmit="redirectAfterSubmit(event)">
     ...
             <button type="submit">Submit</button>
@@ -199,12 +200,10 @@ function redirectAfterSubmit(e) {
     .catch(error => alert("Error: " + error));
 }
 </script>
-    </form>
-</div>
-
-
+    
 </body>
 </html>
+
 
 
 
