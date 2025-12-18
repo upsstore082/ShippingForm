@@ -185,37 +185,34 @@
     
 <script>
 document.getElementById("shippingForm").addEventListener("submit", function(e) {
-    e.preventDefault(); // STOP normal form submit
+    e.preventDefault();
 
     const form = e.target;
     const formData = new FormData(form);
 
-    fetch("YOUR_WEB_APP_URL_HERE", {
+    fetch("https://upsstore082.github.io/ShippingForm/index.html", {
         method: "POST",
         body: formData
     })
-    .then(response => response.text())
-    .then(() => {
-        // Clear all form fields
-        form.reset();
-
-        // Hide USA item description if visible
-        document.getElementById("usaDescriptionBox").classList.add("hidden");
-
-        // OPTIONAL: Reload the page instead of reset
-        // location.reload();
-
-        alert("Form submitted successfully. Please wait for your turn.");
+    .then(res => res.text())
+    .then(text => {
+        if (text.includes("SUCCESS")) {
+            form.reset();
+            document.getElementById("usaDescriptionBox").classList.add("hidden");
+            alert("Form submitted successfully. Please wait for your turn.");
+        } else {
+            alert("Submission failed:\n" + text);
+        }
     })
-    .catch(error => {
-        alert("Submission failed. Please try again.");
-        console.error(error);
+    .catch(err => {
+        alert("Network error. Please try again.");
+        console.error(err);
     });
 });
 </script>
-
 </body>
 </html>
+
 
 
 
